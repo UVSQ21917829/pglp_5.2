@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-
 public class TestJDBC {
 
 	public static Connection connection = null;
@@ -45,8 +44,8 @@ public class TestJDBC {
 		      String tableGroupe = "CREATE TABLE  GROUPE ( id int PRIMARY KEY NOT NULL)";
 		      statement.execute(tableGroupe);
 		      String tableDansPers ="CREATE TABLE DANSPERSONNEL(id int, id_p int, PRIMARY KEY(id,id_p), FOREIGN KEY (id) REFERENCES GROUPE(id), FOREIGN KEY (id_p) REFERENCES PERSONNEL(id) )";
-		      statement.execute(tableDansPers);
-		      String tableDansGrp ="CREATE TABLE DANSGROUPE(id int, id_g int, PRIMARY KEY(id,id_g), FOREIGN KEY (id) REFERENCES GROUPE(id), FOREIGN KEY (id_g) REFERENCES GROUPE(id) )";
+		      statement.execute(tableDansPers);*/
+		     /* String tableDansGrp ="CREATE TABLE DANSGROUP(id int, id_g int, PRIMARY KEY(id,id_g), FOREIGN KEY (id) REFERENCES GROUPE(id), FOREIGN KEY (id_g) REFERENCES GROUPE(id) )";
 		      statement.execute(tableDansGrp);*/
 		      connection.close();
 		    } catch (SQLException e) {
@@ -73,6 +72,7 @@ public class TestJDBC {
 		System.out.println(p2.getTels());
 		
 	}
+	
 	@Test
 	public void testDeletePersonnelDao() throws IOException, ClassNotFoundException {
 		List<Integer> tels = new ArrayList<Integer>();
@@ -84,8 +84,40 @@ public class TestJDBC {
 		perDAO.delete(p1.getId());
 		Personnel p2=perDAO.read(p1.getId());
 		assertNull(p2);
-		//System.out.println(p2.getTels());
 		
+	}
+	@Test
+	public void testCreateFindGroupDao() throws IOException, ClassNotFoundException {
+		List<Integer> tels = new ArrayList<Integer>();
+		GroupeDAO grpDAO = new GroupeDAO();
+		tels.add(456789328);
+		tels.add(655638644);
+		Personnel p1= new Personnel.Builder(23, "aa", "jj",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
+		CompositePersonnels groupe= new CompositePersonnels(516);
+		CompositePersonnels groupe2= new CompositePersonnels(617);
+		groupe.addPersonnel(p1);
+		groupe.addPersonnel(groupe2);
+		grpDAO.create(groupe);
+		CompositePersonnels g=grpDAO.read(groupe.getId());
+		assertNotNull(g);
+		System.out.println(g.listperso);
+		
+	}
+	@Test
+	public void testDeleteGroupeDao() throws IOException, ClassNotFoundException {
+		List<Integer> tels = new ArrayList<Integer>();
+		GroupeDAO grpDAO = new GroupeDAO();
+		tels.add(456789328);
+		tels.add(655638644);
+		Personnel p1= new Personnel.Builder(23, "aa", "jj",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
+		CompositePersonnels groupe= new CompositePersonnels(516);
+		CompositePersonnels groupe2= new CompositePersonnels(617);
+		groupe.addPersonnel(p1);
+		groupe.addPersonnel(groupe2);
+		grpDAO.create(groupe);
+		grpDAO.delete(groupe.getId());
+		CompositePersonnels g=grpDAO.read(groupe.getId());
+		assertNull(g);		
 	}
 	
 
