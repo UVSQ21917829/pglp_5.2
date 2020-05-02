@@ -6,7 +6,6 @@
   <artifactId>exercice5_2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>exercice5_2</name>
   <url>http://maven.apache.org</url>
 
@@ -15,6 +14,12 @@
   </properties>
 
   <dependencies>
+   <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>10.11.1.1</version>
+    </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
