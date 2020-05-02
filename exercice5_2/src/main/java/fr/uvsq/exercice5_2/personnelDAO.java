@@ -62,14 +62,13 @@ public class personnelDAO extends JdbcDAO<Personnel> {
 	          // liste des telephones
 		      ResultSet resultTels = prepareTel.executeQuery();
 		      List<Integer> tels = new ArrayList<Integer>();
-		      if(resultTels.first()) {
 		        while (resultTels.next()) {
 		          tels.add(resultTels.getInt("tel"));
 		        }
-		      }
+		     
 	        //selection personnel
 	        ResultSet resultPers = preparePers.executeQuery();
-	          if (resultPers.first()) {
+	          if (resultPers.next()) {
 	            personnel =new Personnel.Builder(resultPers.getInt("id"),
 	                	resultPers.getString("nom"), resultPers.getString("prenom"), resultPers.getDate("datenaissance").toLocalDate())
 	                    .addDateNumeroTelephone(tels).addFonction(resultPers.getString("fonction"))

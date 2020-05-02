@@ -21,7 +21,7 @@ public  abstract class JdbcDAO <T>{
     public void createConnection() {
     	try
         {
-            Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
             //Get a connection
             connection = DriverManager.getConnection(databaseURL); 
         }
