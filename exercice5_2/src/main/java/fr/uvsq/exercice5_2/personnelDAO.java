@@ -115,6 +115,7 @@ public class personnelDAO extends JdbcDAO<Personnel> {
 				    } catch (SQLException e) {
 				      e.printStackTrace();
 				    }
+	    this.closeConnexion();
 	}
 
 }
