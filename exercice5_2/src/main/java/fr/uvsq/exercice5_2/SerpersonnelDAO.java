@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
-public class SerpersonnelDAO extends SerDAO<Personnel> {
+public class SerpersonnelDAO extends DAO<Personnel> {
 
 	
 	public Personnel create(Personnel personnel) throws IOException {
@@ -43,13 +43,13 @@ public class SerpersonnelDAO extends SerDAO<Personnel> {
 	
 	}
 
-	public Personnel delete(Integer id) throws IOException {
+	public void delete(Integer id) throws IOException {
 		// TODO Auto-generated method stub
 		FileOutputStream fout = new FileOutputStream("personnel.ser") ;
     	ObjectOutputStream out = new ObjectOutputStream(fout) ;	
     	out.write(null);
     	out.close() ;
-		return null;
-	}
+      ;
+}
 
 }

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GroupeDAO extends JdbcDAO<CompositePersonnels> {
+public class GroupeDAO extends DAO<CompositePersonnels> {
 	
 	public CompositePersonnels create(CompositePersonnels obj) throws IOException {
 		// TODO Auto-generated method stub
@@ -20,7 +20,9 @@ public class GroupeDAO extends JdbcDAO<CompositePersonnels> {
 		for (InterfacePersonnel composite : obj.listperso ) {
 			
 	        if (composite instanceof Personnel) {
-	          personnelDAO pd= new personnelDAO();
+	        	
+	          @SuppressWarnings("unchecked")
+			  DAO<Personnel> pd=  AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 	          pd.create((Personnel) composite);
 	          this.createConnection();
 	  		  PreparedStatement prepareEstDansPersonnal = this.connection.prepareStatement("INSERT INTO DANSPERSONNEL (id,id_p) VALUES(?,?)");
@@ -71,7 +73,7 @@ public class GroupeDAO extends JdbcDAO<CompositePersonnels> {
 		          this.closeConnexion();
 		          
 		          while (resPerso.next()) {
-		            personnelDAO pdao= new personnelDAO();
+		        	DAO<Personnel> pdao=  AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		            gr.addPersonnel((Personnel) pdao.read(resPerso.getInt("id_p")));
 		          }
 	             //groupe

@@ -62,7 +62,7 @@ public class TestJDBC {
 	@Test
 	public void testCreateFindPersonnelDao() throws IOException, ClassNotFoundException {
 		List<Integer> tels = new ArrayList<Integer>();
-		personnelDAO perDAO = new personnelDAO();
+		DAO<Personnel> perDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		tels.add(456789328);
 		tels.add(655638644);
 		Personnel p1= new Personnel.Builder(12, "aa", "jj",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
@@ -76,7 +76,7 @@ public class TestJDBC {
 	@Test
 	public void testDeletePersonnelDao() throws IOException, ClassNotFoundException {
 		List<Integer> tels = new ArrayList<Integer>();
-		personnelDAO perDAO = new personnelDAO();
+		DAO<Personnel> perDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		tels.add(456789328);
 		tels.add(655638644);
 		Personnel p1= new Personnel.Builder(13, "pers", "prenompers",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
@@ -89,7 +89,7 @@ public class TestJDBC {
 	@Test
 	public void testCreateFindGroupDao() throws IOException, ClassNotFoundException {
 		List<Integer> tels = new ArrayList<Integer>();
-		GroupeDAO grpDAO = new GroupeDAO();
+		DAO<CompositePersonnels> grpDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		tels.add(456789328);
 		tels.add(655638644);
 		Personnel p1= new Personnel.Builder(23, "aa", "jj",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
@@ -106,7 +106,7 @@ public class TestJDBC {
 	@Test
 	public void testDeleteGroupeDao() throws IOException, ClassNotFoundException {
 		List<Integer> tels = new ArrayList<Integer>();
-		GroupeDAO grpDAO = new GroupeDAO();
+		DAO<CompositePersonnels> grpDAO = AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		tels.add(456789328);
 		tels.add(655638644);
 		Personnel p1= new Personnel.Builder(23, "aa", "jj",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();

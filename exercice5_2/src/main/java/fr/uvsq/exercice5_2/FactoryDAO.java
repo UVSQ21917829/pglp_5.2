@@ -4,14 +4,20 @@ public class FactoryDAO extends AbstractFactoryDAO{
 	
 	
 
-    public static JdbcDAO<CompositePersonnels> getGroupeDAO(){
 
-        return new GroupeDAO();
-    }
+	@Override
+	public DAO<Personnel> getPersonneDAO() {
+		// TODO Auto-generated method stub
+		return new personnelDAO();
 
-    public static JdbcDAO<Personnel> getPersonnelDAO(){
+		
+	}
 
-        return new personnelDAO();
-    }
+	@Override
+	public DAO<CompositePersonnels> getGroupeDAO() {
+		// TODO Auto-generated method stub
+		return new GroupeDAO();
+		
+	}
 
 }

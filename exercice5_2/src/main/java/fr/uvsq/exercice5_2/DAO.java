@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public  abstract class JdbcDAO <T>{
+public  abstract class DAO <T>{
 	
 	//crud
 	protected Connection connection=null;

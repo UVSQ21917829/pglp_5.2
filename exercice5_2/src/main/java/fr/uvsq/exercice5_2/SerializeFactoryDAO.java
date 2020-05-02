@@ -2,14 +2,25 @@ package fr.uvsq.exercice5_2;
 
 public class SerializeFactoryDAO extends AbstractFactoryDAO {
 	
-	public static SerDAO<CompositePersonnels> getGroupeDAO(){
+	
+	@Override
+	public DAO<Personnel> getPersonneDAO() {
 
-        return new SerGroupeDAO();
-    }
+		return new SerpersonnelDAO();
 
-    public static SerDAO<Personnel> getPersonnelDAO(){
+		
+	}
 
-        return new SerpersonnelDAO();
-    }
+	@Override
+	public DAO<CompositePersonnels> getGroupeDAO() {
+		// TODO Auto-generated method stub
+		return new SerGroupeDAO();
+	}
+
+	
+
+	
+
+	
 
 }

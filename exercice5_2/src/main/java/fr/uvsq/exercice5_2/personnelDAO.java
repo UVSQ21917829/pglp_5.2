@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class personnelDAO extends JdbcDAO<Personnel> {
+public class personnelDAO extends DAO<Personnel> {
 
 	
 	public Personnel create(Personnel personnel) throws IOException {

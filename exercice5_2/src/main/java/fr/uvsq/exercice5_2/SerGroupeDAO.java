@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class SerGroupeDAO extends SerDAO<CompositePersonnels> {
+public class SerGroupeDAO extends DAO<CompositePersonnels> {
 	
 	public CompositePersonnels create(CompositePersonnels obj) throws IOException {
 		// TODO Auto-generated method stub
@@ -37,9 +37,8 @@ public class SerGroupeDAO extends SerDAO<CompositePersonnels> {
 		return obj;
 	}
 
-	public CompositePersonnels delete(Integer id) {
+	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
