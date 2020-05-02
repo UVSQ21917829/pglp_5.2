@@ -5,17 +5,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-@SuppressWarnings("serial")
+
 public final class Personnel implements InterfacePersonnel, Serializable {
-    private int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
     private String nom;
     private String prenom;
     private LocalDate dateNaissance;
-    private String fonction=null;
+    private String fonction;
     List<Integer> tels= new ArrayList<Integer>();
 	public Personnel(Builder builder) {
 		this.id = builder.id;
@@ -52,7 +53,7 @@ public final class Personnel implements InterfacePersonnel, Serializable {
        }
        public Builder addFonction(String fn) {
    		
-   		this.fonction=fn;
+   		this.setFonction(fn);
    		return this;
    	}
    	public Builder addDateNumeroTelephone( List<Integer> tels2) {
@@ -64,7 +65,14 @@ public final class Personnel implements InterfacePersonnel, Serializable {
        public Personnel build() {
     	   return new Personnel(this);
        }
+	
+	public void setFonction(String fonction) {
+		this.fonction = fonction;
+	}
        
+	public String getFonction(String fonction) {
+		return this.fonction;
+	}
 		
 	}
 	public String toString(){
@@ -97,14 +105,6 @@ public final class Personnel implements InterfacePersonnel, Serializable {
 		return dateNaissance;
 	}
 
-
-
-	public String getFonction() {
-		return fonction;
-	}
-
-
-
 	public List<Integer> getTels() {
 		return tels;
 	}
@@ -113,6 +113,18 @@ public final class Personnel implements InterfacePersonnel, Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+
+
+	public String getFonction() {
+		return fonction;
+	}
+
+
+
+	public void setFonction(String fonction) {
+		this.fonction = fonction;
 	}
 
 

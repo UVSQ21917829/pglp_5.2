@@ -10,45 +10,71 @@ import java.io.ObjectOutputStream;
 public class SerpersonnelDAO extends DAO<Personnel> {
 
 	
-	public Personnel create(Personnel personnel) throws IOException {
+	public Personnel create(Personnel personnel)  {
 		// TODO Auto-generated method stub
 		
-		FileOutputStream fout = new FileOutputStream("personnel.txt") ;
-    	ObjectOutputStream out = new ObjectOutputStream(fout) ;
-    	out.writeObject(personnel) ; 
-    	out.close() ;
+		
+		try (FileOutputStream fout = new FileOutputStream("personnel.txt") ;
+    	ObjectOutputStream out = new ObjectOutputStream(fout);){
+			out.writeObject(personnel) ; 
+	    	out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
 		return personnel;
 	}
 
-	public Personnel read(Integer id) throws ClassNotFoundException, IOException {
+	public Personnel read(Integer id)   {
 		// TODO Auto-generated method stub
-		Personnel personnel;
-		FileInputStream fileInput = new FileInputStream("personnel.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInput);
+		Personnel personnel=null;
+		
+		try(FileInputStream fileInput = new FileInputStream("personnel.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInput);) {
+			 personnel = (Personnel) objectInputStream.readObject();
+		        objectInputStream.close();
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
-        personnel = (Personnel) objectInputStream.readObject();
-  
+       
 		return personnel;
 	}
 
-	public Personnel update(Personnel obj) throws ClassNotFoundException, IOException {
+	public Personnel update(Personnel obj)   {
 		// TODO Auto-generated method stub
-		Personnel personnel=read(obj.getId());
-		FileOutputStream fin = new FileOutputStream("personnel.text") ;
-		ObjectOutputStream intn = new ObjectOutputStream(fin) ;
-		intn.writeObject(obj) ; 
-		intn.close();
+		//Personnel personnel=read(obj.getId());
+		
+		
+		try (FileOutputStream fin = new FileOutputStream("personnel.text") ;
+				ObjectOutputStream intn = new ObjectOutputStream(fin);){
+			intn.writeObject(obj) ; 
+			intn.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return obj;
 		
 	
 	}
 
-	public void delete(Integer id) throws IOException {
+	public void delete(Integer id)  {
 		// TODO Auto-generated method stub
-		FileOutputStream fout = new FileOutputStream("personnel.ser") ;
-    	ObjectOutputStream out = new ObjectOutputStream(fout) ;	
-    	out.write(null);
-    	out.close() ;
+		
+		try(FileOutputStream fout = new FileOutputStream("personnel.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fout) ;) {
+			out.write(id);
+	    	out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    		
+    	
       ;
 }
 

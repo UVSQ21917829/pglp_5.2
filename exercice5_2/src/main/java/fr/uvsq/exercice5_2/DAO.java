@@ -11,7 +11,7 @@ public  abstract class DAO <T>{
 	//crud
 	protected Connection connection=null;
 	String databaseURL = "jdbc:derby:my_db;create=true";
-	public  Statement statement = null;
+	protected  Statement statement = null;
 	public abstract T create(T obj) throws IOException;
     public abstract T read(Integer id) throws ClassNotFoundException, IOException;
     public abstract T update(T obj) throws ClassNotFoundException, IOException;
@@ -37,15 +37,11 @@ public  abstract class DAO <T>{
     {
     	try
         {
-            if (statement != null)
-            {
-            	statement.close();
-            }
-            if (connection != null)
-            {
-                DriverManager.getConnection(databaseURL + ";shutdown=true");
+                if(statement!=null) {
+                	statement.close();
+                }
                 connection.close();
-            }           
+                     
         }
         catch (SQLException sqlExcept)
         {

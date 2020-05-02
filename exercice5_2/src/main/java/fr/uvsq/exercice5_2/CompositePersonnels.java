@@ -7,9 +7,12 @@ import java.util.List;
 
 
 
-@SuppressWarnings("serial")
 public class CompositePersonnels implements InterfacePersonnel,Serializable {
-    int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	int id;
 	List<InterfacePersonnel> listperso= new ArrayList<InterfacePersonnel>();
 	public void print() {
 		// TODO Auto-generated method stub

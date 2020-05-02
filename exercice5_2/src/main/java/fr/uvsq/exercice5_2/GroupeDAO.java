@@ -12,20 +12,23 @@ public class GroupeDAO extends DAO<CompositePersonnels> {
 		// TODO Auto-generated method stub
 		this.createConnection();
 		
-		try {
-		PreparedStatement prepareGroup = this.connection.prepareStatement("INSERT INTO GROUPE (id) VALUES(?)");
+		try(
+				PreparedStatement prepareGroup = this.connection.prepareStatement("INSERT INTO GROUPE (id) VALUES(?)");
+		  		PreparedStatement prepareEstDansPersonnal = this.connection.prepareStatement("INSERT INTO DANSPERSONNEL (id,id_p) VALUES(?,?)");
+		        PreparedStatement prepareEstDansGroup = this.connection.prepareStatement("INSERT INTO DANSGROUP (id,id_g) VALUES(?,?)");
+
+				) {
+		
 		prepareGroup.setInt(1,obj.getId());
 		prepareGroup.executeUpdate();
-		this.closeConnexion();
+		this.statement=connection.createStatement();
 		for (InterfacePersonnel composite : obj.listperso ) {
 			
 	        if (composite instanceof Personnel) {
 	        	
-	          @SuppressWarnings("unchecked")
 			  DAO<Personnel> pd=  AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 	          pd.create((Personnel) composite);
 	          this.createConnection();
-	  		  PreparedStatement prepareEstDansPersonnal = this.connection.prepareStatement("INSERT INTO DANSPERSONNEL (id,id_p) VALUES(?,?)");
 	  		  
 	          prepareEstDansPersonnal.setInt(1, obj.getId());
 	          prepareEstDansPersonnal.setInt(2, ((Personnel) composite).getId());
@@ -34,7 +37,6 @@ public class GroupeDAO extends DAO<CompositePersonnels> {
 	        } else if (obj.getId()!=((CompositePersonnels) composite).getId()&&composite instanceof CompositePersonnels ) {
 	          this.create((CompositePersonnels) composite);
 	          this.createConnection();
-	          PreparedStatement prepareEstDansGroup = this.connection.prepareStatement("INSERT INTO DANSGROUP (id,id_g) VALUES(?,?)");
 
 	          prepareEstDansGroup.setInt(1, obj.getId());
 	          prepareEstDansGroup.setInt(2, ((CompositePersonnels) composite).getId());
@@ -55,10 +57,13 @@ public class GroupeDAO extends DAO<CompositePersonnels> {
 	public CompositePersonnels read(Integer id) throws IOException, ClassNotFoundException {
 		this.createConnection();
 		CompositePersonnels gr=null;
-		try {
-			  PreparedStatement preapareGroupe =connection.prepareStatement("SELECT * FROM GROUPE  WHERE id = ?");
-	          PreparedStatement estdansperso =this.connection.prepareStatement("SELECT id_p FROM DANSPERSONNEL  WHERE id = ?");  
-	          PreparedStatement estdandgrop =this.connection.prepareStatement("SELECT id_g FROM DANSGROUPE  WHERE id =  ?");
+		try(
+				PreparedStatement preapareGroupe =connection.prepareStatement("SELECT * FROM GROUPE  WHERE id = ?");
+		        PreparedStatement estdansperso =this.connection.prepareStatement("SELECT id_p FROM DANSPERSONNEL  WHERE id = ?");  
+		        PreparedStatement estdandgrop =this.connection.prepareStatement("SELECT id_g FROM DANSGROUPE  WHERE id =  ?");
+	
+				) {
+			
 	          preapareGroupe.setInt(1, id);
 	          
 		      ResultSet ressultGroupeObj = preapareGroupe.executeQuery();
@@ -73,10 +78,12 @@ public class GroupeDAO extends DAO<CompositePersonnels> {
 		          this.closeConnexion();
 		          
 		          while (resPerso.next()) {
+		        	
 		        	DAO<Personnel> pdao=  AbstractFactoryDAO.getDAOFactory(AbstractFactoryDAO.DaoType.JDBC).getPersonneDAO();
 		            gr.addPersonnel((Personnel) pdao.read(resPerso.getInt("id_p")));
 		          }
 	             //groupe
+
 		          estdandgrop.setInt(1, id);
 		          
 		         ResultSet resultGrp = estdandgrop.executeQuery();
@@ -99,9 +106,9 @@ public class GroupeDAO extends DAO<CompositePersonnels> {
 
 	public void  delete(Integer id) {
 		// TODO Auto-generated method stub
-		
-		try {
-			PreparedStatement preparedeleteG =this.connection.prepareStatement("DELETE FROM GROUPE WHERE id= ?"); 
+		this.createConnection();
+		try (PreparedStatement preparedeleteG =this.connection.prepareStatement("DELETE FROM GROUPE WHERE id= ?"); ){
+			
 			
 			preparedeleteG.setInt(1, id);
 			preparedeleteG.executeUpdate();
