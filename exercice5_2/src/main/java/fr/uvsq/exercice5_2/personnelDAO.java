@@ -107,11 +107,9 @@ public class personnelDAO extends JdbcDAO<Personnel> {
 		this.createConnection();
 	    try {
 	    	PreparedStatement deletePers =this.connection.prepareStatement("DELETE FROM PERSONNEL  WHERE id = ?");  
-	    	PreparedStatement deleteTels =this.connection.prepareStatement("DELETE FROM TELS  WHERE id = ?");  
 	    	deletePers.setInt(1, id);
-	    	deleteTels.setInt(1, id);
+
 	    	deletePers.executeUpdate();
-	    	deleteTels.executeUpdate();
 				    } catch (SQLException e) {
 				      e.printStackTrace();
 				    }

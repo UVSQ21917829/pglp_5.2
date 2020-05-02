@@ -100,15 +100,10 @@ public class GroupeDAO extends JdbcDAO<CompositePersonnels> {
 		
 		try {
 			PreparedStatement preparedeleteG =this.connection.prepareStatement("DELETE FROM GROUPE WHERE id= ?"); 
-			PreparedStatement preparedeleteDansG =this.connection.prepareStatement("DELETE FROM DANSGROUPE WHERE id= ?"); 
-			PreparedStatement preparedeleteDansP =this.connection.prepareStatement("DELETE FROM DANSPERSONNEL WHERE id= ?"); 
 			
 			preparedeleteG.setInt(1, id);
 			preparedeleteG.executeUpdate();
-			preparedeleteDansG.setInt(1, id);
-			preparedeleteDansG.executeUpdate();
-			preparedeleteDansP.setInt(1, id);
-			preparedeleteDansP.executeUpdate();
+
 			
 		    } catch (SQLException e) {
 		      e.printStackTrace();

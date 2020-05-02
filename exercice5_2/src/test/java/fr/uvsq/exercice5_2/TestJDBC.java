@@ -39,13 +39,13 @@ public class TestJDBC {
 
 		     /* String tablePersennel ="CREATE TABLE  PERSONNEL (id int PRIMARY KEY NOT NULL,nom varchar(50) , prenom  varchar(50), datenaissance DATE,fonction varchar(50))";
 		      statement.execute(tablePersennel);
-		      String tableTel ="CREATE TABLE  TELS (id int, tel int, PRIMARY KEY(id, tel), FOREIGN KEY(id) REFERENCES PERSONNEL(id) )";
+		      String tableTel ="CREATE TABLE  TELS (id int, tel int, PRIMARY KEY(id, tel), FOREIGN KEY(id) REFERENCES PERSONNEL(id) ON DELETE CASCADE)";
 		      statement.execute(tableTel);
 		      String tableGroupe = "CREATE TABLE  GROUPE ( id int PRIMARY KEY NOT NULL)";
 		      statement.execute(tableGroupe);
-		      String tableDansPers ="CREATE TABLE DANSPERSONNEL(id int, id_p int, PRIMARY KEY(id,id_p), FOREIGN KEY (id) REFERENCES GROUPE(id), FOREIGN KEY (id_p) REFERENCES PERSONNEL(id) )";
+		      String tableDansPers ="CREATE TABLE DANSPERSONNEL(id int, id_p int, PRIMARY KEY(id,id_p), FOREIGN KEY (id) REFERENCES GROUPE(id) ON DELETE CASCADE, FOREIGN KEY (id_p) REFERENCES PERSONNEL(id) ON DELETE CASCADE )";
 		      statement.execute(tableDansPers);*/
-		     /* String tableDansGrp ="CREATE TABLE DANSGROUP(id int, id_g int, PRIMARY KEY(id,id_g), FOREIGN KEY (id) REFERENCES GROUPE(id), FOREIGN KEY (id_g) REFERENCES GROUPE(id) )";
+		     /* String tableDansGrp ="CREATE TABLE DANSGROUP(id int, id_g int, PRIMARY KEY(id,id_g), FOREIGN KEY (id) REFERENCES GROUPE(id) ON DELETE CASCADE, FOREIGN KEY (id_g) REFERENCES GROUPE(id) ON DELETE CASCADE)";
 		      statement.execute(tableDansGrp);*/
 		      connection.close();
 		    } catch (SQLException e) {
