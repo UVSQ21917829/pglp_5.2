@@ -73,6 +73,20 @@ public class TestJDBC {
 		System.out.println(p2.getTels());
 		
 	}
+	@Test
+	public void testDeletePersonnelDao() throws IOException, ClassNotFoundException {
+		List<Integer> tels = new ArrayList<Integer>();
+		personnelDAO perDAO = new personnelDAO();
+		tels.add(456789328);
+		tels.add(655638644);
+		Personnel p1= new Personnel.Builder(13, "pers", "prenompers",LocalDate.parse("1997-08-01",DateTimeFormatter.ISO_DATE)).addDateNumeroTelephone(tels).addFonction("developer").build();
+		perDAO.create(p1);
+		perDAO.delete(p1.getId());
+		Personnel p2=perDAO.read(p1.getId());
+		assertNull(p2);
+		//System.out.println(p2.getTels());
+		
+	}
 	
 
 }
