@@ -1,6 +1,6 @@
 package fr.uvsq.exercice5_2;
 
-public class FactoryDAO {
+public class FactoryDAO extends AbstractFactoryDAO{
 	
 	
 
