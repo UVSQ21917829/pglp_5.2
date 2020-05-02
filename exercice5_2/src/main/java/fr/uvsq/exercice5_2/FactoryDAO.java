@@ -4,12 +4,12 @@ public class FactoryDAO {
 	
 	
 
-    public static DAO<CompositePersonnels> getGroupeDAO(){
+    public static JdbcDAO<CompositePersonnels> getGroupeDAO(){
 
         return new GroupeDAO();
     }
 
-    public static DAO<Personnel> getPersonnelDAO(){
+    public static JdbcDAO<Personnel> getPersonnelDAO(){
 
         return new personnelDAO();
     }

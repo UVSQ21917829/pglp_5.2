@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class GroupeDAO extends JdbcDAO<CompositePersonnels> {
+public class SerGroupeDAO extends SerDAO<CompositePersonnels> {
 	
 	public CompositePersonnels create(CompositePersonnels obj) throws IOException {
 		// TODO Auto-generated method stub
-		this.createConnection();
 		FileOutputStream fout = new FileOutputStream("groupe.ser") ;
     	ObjectOutputStream out = new ObjectOutputStream(fout) ;
     	out.writeObject(obj) ; 

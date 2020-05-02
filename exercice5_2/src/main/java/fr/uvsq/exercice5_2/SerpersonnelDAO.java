@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
-public class personnelDAO extends JdbcDAO<Personnel> {
+public class SerpersonnelDAO extends SerDAO<Personnel> {
 
 	
 	public Personnel create(Personnel personnel) throws IOException {

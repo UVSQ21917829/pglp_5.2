@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public  abstract class DAO <T>{
+public  abstract class JdbcDAO <T>{
 	
 	//crud
 	protected Connection connection=null;
 	String databaseURL = "jdbc:derby:my_db;create=true";
+	private  Statement statement = null;
 	public abstract T create(T obj) throws IOException;
     public abstract T read(Integer id) throws ClassNotFoundException, IOException;
     public abstract T update(T obj) throws ClassNotFoundException, IOException;
@@ -32,11 +34,22 @@ public  abstract class DAO <T>{
     //fermer la connection
     public  void closeConnexion()
     {
-    	try {
-    	      connection.close();
-    	    } catch (SQLException e) {
-    	      e.printStackTrace();
-    	    }
+    	try
+        {
+            if (statement != null)
+            {
+            	statement.close();
+            }
+            if (connection != null)
+            {
+                DriverManager.getConnection(databaseURL + ";shutdown=true");
+                connection.close();
+            }           
+        }
+        catch (SQLException sqlExcept)
+        {
+            
+        }
 
     }
 
