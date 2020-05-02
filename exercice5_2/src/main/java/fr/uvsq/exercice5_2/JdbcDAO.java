@@ -15,7 +15,7 @@ public  abstract class JdbcDAO <T>{
 	public abstract T create(T obj) throws IOException;
     public abstract T read(Integer id) throws ClassNotFoundException, IOException;
     public abstract T update(T obj) throws ClassNotFoundException, IOException;
-    public abstract T delete(Integer id) throws IOException;
+    public abstract void delete(Integer id) throws IOException;
 	
     // la creation de la connexion avec un SGBD derby en mode embarqué
     public void createConnection() {

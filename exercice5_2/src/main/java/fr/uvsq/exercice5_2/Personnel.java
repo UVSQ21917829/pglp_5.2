@@ -55,8 +55,8 @@ public final class Personnel implements InterfacePersonnel, Serializable {
    		this.fonction=fn;
    		return this;
    	}
-   	public Builder addDateNumeroTelephone( Integer numero) {
-   		this.tels.add(numero);
+   	public Builder addDateNumeroTelephone( List<Integer> tels2) {
+   		this.tels.addAll(tels2);
    		
    		return this;
    		
@@ -76,6 +76,43 @@ public final class Personnel implements InterfacePersonnel, Serializable {
 
 	public Integer getId() {
 		return id;
+	}
+
+
+
+	public String getNom() {
+		// TODO Auto-generated method stub
+		return nom;
+	}
+
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+
+
+	public String getFonction() {
+		return fonction;
+	}
+
+
+
+	public List<Integer> getTels() {
+		return tels;
+	}
+
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 
