@@ -1,0 +1,64 @@
+----------------------------------------------------------------
+Sat May 02 15:44:50 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0171-d5a1-e842-0000031778a8 
+on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/C:/Users/Utilisateur/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_221-b11
+user.dir=C:\Users\Utilisateur\git\pglp_5.2\exercice5_2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 02 15:44:51 CEST 2020:
+Shutting down instance a816c00e-0171-d5a1-e842-0000031778a8 on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+----------------------------------------------------------------
+Sat May 02 15:44:51 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 0b3e4052-0171-d5a1-e842-0000031778a8 
+on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/C:/Users/Utilisateur/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_221-b11
+user.dir=C:\Users\Utilisateur\git\pglp_5.2\exercice5_2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 02 15:44:52 CEST 2020:
+Shutting down instance 0b3e4052-0171-d5a1-e842-0000031778a8 on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+----------------------------------------------------------------
+Sat May 02 15:44:52 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 72e9c096-0171-d5a1-e842-0000031778a8 
+on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/C:/Users/Utilisateur/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_221-b11
+user.dir=C:\Users\Utilisateur\git\pglp_5.2\exercice5_2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 02 15:44:52 CEST 2020:
+Shutting down instance 72e9c096-0171-d5a1-e842-0000031778a8 on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+----------------------------------------------------------------
+Sat May 02 15:44:52 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance df1940da-0171-d5a1-e842-0000031778a8 
+on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/C:/Users/Utilisateur/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_221-b11
+user.dir=C:\Users\Utilisateur\git\pglp_5.2\exercice5_2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat May 02 15:44:53 CEST 2020:
+Shutting down instance df1940da-0171-d5a1-e842-0000031778a8 on database directory C:\Users\Utilisateur\git\pglp_5.2\exercice5_2\my_db with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
