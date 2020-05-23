@@ -75,7 +75,7 @@ public class SerpersonnelDAO extends DAO<Personnel> {
 		}
     		
     	
-      ;
-}
+      
+    }
 
 }
